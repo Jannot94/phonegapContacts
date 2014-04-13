@@ -1,5 +1,5 @@
 function contactsFind_onSuccess(contacts) {
-    alert('Found ' + navigator.contacts.length + ' navigator.contacts.');
+    alert('Found ' + contacts.length + ' navigator.contacts.');
 }
 
 function contactsFind_onError(contactError) { 
@@ -21,7 +21,6 @@ function onDeviceReady() {
     options.filter   = "Jean";
     options.multiple = true;
     var fields       = ["displayName", "name"];
-    alert('find contacts');
     navigator.contacts.find(fields, contactsFind_onSuccess, contactsFind_onError, options);
 }
 
