@@ -1,5 +1,5 @@
 function contactsFind_onSuccess(contacts) {
-    alert('Found ' + contacts.length + ' navigator.contacts.');
+    //alert('Found ' + contacts.length + ' navigator.contacts.');
 
     var div = document.getElementById("contactList");
 
@@ -9,7 +9,6 @@ function contactsFind_onSuccess(contacts) {
     }
 
     div.innerHTML = p;
-    //var contact = 
 }
 
 function contactsFind_onError(contactError) { 
@@ -24,13 +23,13 @@ function onDeviceReady() {
     listeningElement.setAttribute('style', 'display:none;');
     receivedElement.setAttribute('style', 'display:block;');
 
-    alert('Received Event: deviceready');
+    //alert('Received Event: deviceready');
 
     // find all contacts with 'Bob' in any name field
     var options      = new ContactFindOptions();
-    options.filter   = "Jean";
+    options.filter   = "";
     options.multiple = true;
-    var fields       = ["displayName"];
+    var fields       = ["displayName", "name"];
     navigator.contacts.find(fields, contactsFind_onSuccess, contactsFind_onError, options);
 }
 
