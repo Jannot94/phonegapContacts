@@ -19,7 +19,7 @@ function SortByEmail(a, b){
 
 function refreshContactView(contacts) {
     for( var j = 0; j < contacts.length; i++) {
-        $("#contactList").append('<li class="list-group-item">' + contacts[i] + '</li>');
+        $("#contactList").append('<li class="list-group-item">' + contacts[i].email + '</li>');
     }
 }
 
