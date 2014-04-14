@@ -39,16 +39,15 @@
         <div id="contactList">
         </div>
         <!--ul id="contactList">
-        </ul-->
+        </ul--> 
         <script type="text/javascript" src="external/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="external/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            //initialize();
             var phonegapDeferred = $.Deferred();
             var jQueryDeferred   = $.Deferred();
-            $.when(phonegapDeferred, jQueryDeferred).done(initialize);
+            $.when(phonegapDeferred, jQueryDeferred).done(start);
         </script>
     </body>
 </html>

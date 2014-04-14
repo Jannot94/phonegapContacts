@@ -1,13 +1,14 @@
 function contactsFind_onSuccess(contacts) {
     alert('Found ' + contacts.length + ' navigator.contacts.');
-    var div = document.getElementById("contactList");
+    //var div = document.getElementById("contactList");
 
-    var p = "";
+    //var p = "";
     for( var i = 0; i < contacts.length; i++) {
-        p = p + "<li class='list-group-item'>" + contacts[i].displayName + "</li>";
+         $("#contactList").append('<li class="list-group-item">' + contacts[i].displayName + '</li>');
+        //p = p + "<li class='list-group-item'>" + contacts[i].displayName + "</li>";
     }
 
-    div.innerHTML = p;
+    //div.innerHTML = p;
 /*
     $.each(contacts, function(key, contact) {
         $("#contactList").append('<li class="list-group-item">' + contact.displayName + '</li>');
@@ -30,19 +31,10 @@ function getContacts() {
 }
 
 function onDeviceReady() {
-    /*var parentElement = document.getElementById("deviceready");
-    var listeningElement = parentElement.querySelector('.listening');
-    var receivedElement = parentElement.querySelector('.received');
-
-    listeningElement.setAttribute('style', 'display:none;');
-    receivedElement.setAttribute('style', 'display:block;');
-    */
     phonegapDeferred.resolve();
-    //alert('Received Event: deviceready');
 }
 
-function initialize() {
-    alert('Very ready!');
+function start() {
     getContacts();
 }
 
