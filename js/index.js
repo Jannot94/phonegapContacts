@@ -40,5 +40,6 @@ function onDeviceReady() {
 }
 
 function initialize() {
+    alert('initialize');
     document.addEventListener('deviceready', onDeviceReady, false);
 }
