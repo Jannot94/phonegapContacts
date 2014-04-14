@@ -1,10 +1,25 @@
 function contactsFind_onSuccess(contacts) {
+    var res = [];
     for( var i = 0; i < contacts.length; i++) {
         if( contacts[i].emails != null ) {
             for( var j = 0; j < contacts[i].emails.length; i++) {
-                $("#contactList").append('<li class="list-group-item">' + contacts[i].emails[j].value + '</li>');
+                res.push({ email : contacts[i].emails[j].value});
             }
         }
+    }
+    res.sort(SortByEmail);
+    refreshContactView(res);
+}
+
+function SortByEmail(a, b){
+  var aEmail = a.email.toLowerCase();
+  var bEmail = b.email.toLowerCase(); 
+  return ((aEmail < bEmail) ? -1 : ((aEmail > bEmail) ? 1 : 0));
+}
+
+function refreshContactView(contacts) {
+    for( var j = 0; j < contacts.length; i++) {
+        $("#contactList").append('<li class="list-group-item">' + contacts[i] + '</li>');
     }
 }
 
