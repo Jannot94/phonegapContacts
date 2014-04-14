@@ -21,6 +21,14 @@ function contactsFind_onError(contactError) {
     alert('onError!');
 }
 
+function getContacts() {
+     var options     = new ContactFindOptions();
+    options.filter   = "";
+    options.multiple = true;
+    var fields       = ["displayName", "name"];
+    navigator.contacts.find(fields, contactsFind_onSuccess, contactsFind_onError, options);
+}
+
 function onDeviceReady() {
     /*var parentElement = document.getElementById("deviceready");
     var listeningElement = parentElement.querySelector('.listening');
@@ -29,22 +37,18 @@ function onDeviceReady() {
     listeningElement.setAttribute('style', 'display:none;');
     receivedElement.setAttribute('style', 'display:block;');
     */
-    alert('Received Event: deviceready');
-
-    // find all contacts with 'Bob' in any name field
-    var options      = new ContactFindOptions();
-    options.filter   = "";
-    options.multiple = true;
-    var fields       = ["displayName", "name"];
-    navigator.contacts.find(fields, contactsFind_onSuccess, contactsFind_onError, options);
+    phonegapDeferred.resolve();
+    //alert('Received Event: deviceready');
 }
 
 function initialize() {
-    document.addEventListener('deviceready', onDeviceReady, false);
+    alert('Very ready!');
+    getContacts();
 }
 
-/*
+document.addEventListener('deviceready', onDeviceReady, false);
+
 $( document ).ready(function() {
-    alert('jQuery Event: document ready');
+    jQueryDeferred.resolve();
+    //alert('jQuery Event: document ready');
 });
-*/
