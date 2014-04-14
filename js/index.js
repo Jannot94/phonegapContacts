@@ -2,7 +2,7 @@ function contactsFind_onSuccess(contacts) {
     var res = new Array();
     for( var i = 0; i < contacts.length; i++) {
         if( contacts[i].emails != null ) {
-            for( var j = 0; j < contacts[i].emails.length; i++) {
+            for( var j = 0; j < contacts[i].emails.length; j++) {
                 res.push( contacts[i].emails[j].value );
                 //$("#contactList").append('<li class="list-group-item">' + contacts[i].emails[j].value + '</li>');
             }
