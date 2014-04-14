@@ -1,5 +1,5 @@
 function contactsFind_onSuccess(contacts) {
-    //alert('Found ' + contacts.length + ' navigator.contacts.');
+    alert('Found ' + contacts.length + ' navigator.contacts.');
 /*
     var div = document.getElementById("contactList");
 
@@ -29,7 +29,7 @@ function onDeviceReady() {
     listeningElement.setAttribute('style', 'display:none;');
     receivedElement.setAttribute('style', 'display:block;');
     */
-    //alert('Received Event: deviceready');
+    alert('Received Event: deviceready');
 
     // find all contacts with 'Bob' in any name field
     var options      = new ContactFindOptions();
