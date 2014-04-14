@@ -8,7 +8,7 @@ function contactsFind_onSuccess(contacts) {
             }
         }
     }
-    //res.sort(SortByEmail);
+    res.sort(SortByEmail);
     refreshContactView(res);
 }
 
