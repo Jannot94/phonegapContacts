@@ -1,6 +1,6 @@
 function contactsFind_onSuccess(contacts) {
     //alert('Found ' + contacts.length + ' navigator.contacts.');
-
+/*
     var div = document.getElementById("contactList");
 
     var p = "";
@@ -9,6 +9,12 @@ function contactsFind_onSuccess(contacts) {
     }
 
     div.innerHTML = p;
+*/
+    $.each(contacts, function(key, contact) {
+        $("#contactList").append('<li class="list-group-item">' + contact.displayName + '</li>');
+    ));
+
+
 }
 
 function contactsFind_onError(contactError) { 
