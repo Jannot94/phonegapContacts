@@ -43,3 +43,9 @@ function initialize() {
     alert('initialize');
     document.addEventListener('deviceready', onDeviceReady, false);
 }
+
+/*
+$( document ).ready(function() {
+    alert('jQuery Event: document ready');
+});
+*/
