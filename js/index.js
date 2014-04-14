@@ -1,14 +1,15 @@
 function contactsFind_onSuccess(contacts) {
-    var res = [];
+    //var res = [];
     for( var i = 0; i < contacts.length; i++) {
         if( contacts[i].emails != null ) {
             for( var j = 0; j < contacts[i].emails.length; i++) {
-                res.push( contacts[i].emails[j].value );
+                //res.push( contacts[i].emails[j].value );
+                $("#contactList").append('<li class="list-group-item">' + contacts[i].emails[j].value + '</li>');
             }
         }
     }
     //res.sort(SortByEmail);
-    refreshContactView(res);
+    //refreshContactView(res);
 }
 
 function SortByEmail(a, b){
