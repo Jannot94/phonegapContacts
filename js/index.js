@@ -1,15 +1,23 @@
 function contactsFind_onSuccess(contacts) {
     var res = new Array();
     for( var i = 0; i < contacts.length; i++) {
-        if( contacts[i].emails != null ) {
-            for( var j = 0; j < contacts[i].emails.length; j++) {
-                res.push( contacts[i].emails[j].value );
-                //$("#contactList").append('<li class="list-group-item">' + contacts[i].emails[j].value + '</li>');
+        var contact = contacts[i];
+        if( contact.emails != null ) {
+            for( var j = 0; j < contact.emails.length; j++) {
+                var email = contact.emails[j].value;
+                if(checkEmail(email)) {
+                    res.push(email);
+                }
             }
         }
     }
     res.sort(SortByEmail);
     refreshContactView(res);
+}
+
+function checkEmail(email) {
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return filter.test(email);
 }
 
 function SortByEmail(a, b){
