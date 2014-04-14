@@ -1,19 +1,22 @@
 function contactsFind_onSuccess(contacts) {
-    // alert('Found ' + contacts.length + ' navigator.contacts.');
     for( var i = 0; i < contacts.length; i++) {
-        $("#contactList").append('<li class="list-group-item">' + contacts[i].displayName + '</li>');
+        if( contacts[i].emails != null ) {
+            for( var j = 0; j < contacts[i].emails.length; i++) {
+                $("#contactList").append('<li class="list-group-item">' + contacts[i].emails[j] + '</li>');
+            }
+        }
     }
 }
 
 function contactsFind_onError(contactError) { 
-    alert('onError!');
+    alert('contactsFind_onError!');
 }
 
 function getContacts() {
     var options      = new ContactFindOptions();
     options.filter   = "";
     options.multiple = true;
-    var fields       = ["displayName"];
+    var fields       = ["emails"];
     navigator.contacts.find(fields, contactsFind_onSuccess, contactsFind_onError, options);
 }
 
