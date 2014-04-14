@@ -4,7 +4,7 @@ function contactsFind_onSuccess(contacts) {
 
     var p = "";
     for( var i = 0; i < contacts.length; i++) {
-        p = p + "<p>"+contacts[i].displayName + "</p>";
+        p = p + "<li class='list-group-item'>" + contacts[i].displayName + "</li>";
     }
 
     div.innerHTML = p;
