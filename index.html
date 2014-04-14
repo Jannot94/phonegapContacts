@@ -45,10 +45,10 @@
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            initialize();
+            //initialize();
             var phonegapDeferred = $.Deferred();
-            var jQueryDeferred = $.Deferred();
-            $.when(dd, jqd).done(initialize);
+            var jQueryDeferred   = $.Deferred();
+            $.when(phonegapDeferred, jQueryDeferred).done(initialize);
         </script>
     </body>
 </html>
