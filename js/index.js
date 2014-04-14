@@ -16,13 +16,13 @@ function contactsFind_onError(contactError) {
 }
 
 function onDeviceReady() {
-    var parentElement = document.getElementById("deviceready");
+    /*var parentElement = document.getElementById("deviceready");
     var listeningElement = parentElement.querySelector('.listening');
     var receivedElement = parentElement.querySelector('.received');
 
     listeningElement.setAttribute('style', 'display:none;');
     receivedElement.setAttribute('style', 'display:block;');
-
+    */
     //alert('Received Event: deviceready');
 
     // find all contacts with 'Bob' in any name field
