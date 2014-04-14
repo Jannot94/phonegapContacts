@@ -7,7 +7,7 @@ function contactsFind_onSuccess(contacts) {
             }
         }
     }
-    //res.sort(SortByEmail);
+    res.sort(SortByEmail);
     refreshContactView(res);
 }
 
@@ -18,7 +18,7 @@ function SortByEmail(a, b){
 }
 
 function refreshContactView(contacts) {
-    for( var j = 0; j < contacts.length; i++) {
+    for( var i = 0; i < contacts.length; i++) {
         $("#contactList").append('<li class="list-group-item">' + contacts[i].email + '</li>');
     }
 }
