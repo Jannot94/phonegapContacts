@@ -12,8 +12,11 @@ function contactsFind_onSuccess(contacts) {
             }
         }
     }
+    // Remove duplicates in the array
     res = unique(res);
+    // Sort the array in alphabetical order
     res.sort(SortByEmail);
+    // refresh the view
     refreshContactView(res);
 }
 
@@ -54,6 +57,80 @@ function getContacts() {
     navigator.contacts.find(fields, contactsFind_onSuccess, contactsFind_onError, options);
 }
 
+function captureAudio() {
+    navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 1});
+}
+
+function captureSuccess(mediaFiles) {
+    var i, len;
+    for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+        getUploadUrl(mediaFiles[i]);
+    }       
+}
+
+function captureError(error) {
+    var msg = 'An error occurred during capture: ' + error.code;
+    navigator.notification.alert(msg, null, 'Uh oh!');
+}
+
+function getUploadUrl(fileToUpload) {
+
+    var recipients = [];
+    
+    var data = {
+        method : "GetUploadUrl"/*,
+        recipients : "test@email.fr"*/
+    };
+    
+    $.ajax({
+        data     : data
+    })
+    .done(function( data ) {
+        alert("url to uplad : " + data.Result.url);
+        uploadFile(fileToUpload, data.Result.url);
+    })
+    .fail( function() {
+        alert("ajax failed");
+    });
+}
+
+function sendRecording(urlToUpload) {
+    
+    var fd = new FormData();
+    //fd.append('myFile', 'test.wav');
+    fd.append('data', currentBlob);
+    
+    $.ajax({
+        type: "POST",
+        url: urlToUpload,
+        data: fd,
+        processData: false,
+        contentType: false
+    })
+    .done(function(data) {
+        alert("Recording saved in blob store");
+    })
+    .fail( function() {
+        alert("sendRecording failed");
+    });
+}
+
+function uploadFile(mediaFile, url) {
+    var ft = new FileTransfer(),
+        path = mediaFile.fullPath,
+        name = mediaFile.name;
+
+    ft.upload(path,url,
+        function(result) {
+            //console.log('Upload success: ' + result.responseCode);
+            alert(result.bytesSent + ' bytes sent');
+        },
+        function(error) {
+            alert('Error uploading file ' + path + ': ' + error.code);
+        },
+        { fileName: name });
+}
+
 function start() {
     getContacts();
 }
@@ -70,6 +147,52 @@ $( document ).ready(function() {
 });
 */
 
+var mediaRec = null;
+
+function record() {
+
+    mediaRec = new Media("myrecording.wav",
+        // success callback
+        function() {
+            alert("recordAudio():Audio Success");
+        },
+
+        // error callback
+        function(err) {
+            alert("recordAudio():Audio Error: "+ err.code);
+        }
+    );
+
+    // Record audio
+    mediaRec.startRecord();
+}
+
+function stop() {
+    alert("stopRecord()");
+    mediaRec.stopRecord();
+}
+
 $(document).on('pageinit', function() {
     jQueryDeferred.resolve();
+
+    $.ajaxSetup({
+        type     : "GET",
+        url      : "http://vooxangels.appspot.com/ajax",
+        dataType : "json",
+        async    : true
+    });
+
+    $( "#sendButton" ).click(function() {
+      getUploadUrl("");
+    });
+
+    $( "#stopButton" ).click(function() {
+      stop();
+    });
+
+    $( "#recButton" ).click(function() {
+      record("");
+    });
+
+    
 });
