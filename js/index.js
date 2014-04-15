@@ -181,21 +181,18 @@ $(document).on('pageinit', function() {
         dataType : "json",
         async    : true
     });
+});
+$( "#sendButton" ).click(function(event) {
+    //event.preventDefault();
+    getUploadUrl("");
+});
 
-    $( "#sendButton" ).click(function(event) {
-        event.preventDefault();
-        getUploadUrl("");
-    });
+$( "#stopButton" ).click(function(event) {
+    //event.preventDefault();
+    stop();
+});
 
-    $( "#stopButton" ).click(function(event) {
-        event.preventDefault();
-        stop();
-    });
-
-    $( "#recButton" ).click(function(event) {
-        event.preventDefault();
-        record("");
-    });
-
-    
+$( "#recButton" ).click(function(event) {
+    //event.preventDefault();
+    record("");
 });
