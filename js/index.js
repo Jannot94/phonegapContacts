@@ -6,7 +6,8 @@ function contactsFind_onSuccess(contacts) {
             for( var j = 0; j < contact.emails.length; j++) {
                 var email = contact.emails[j].value;
                 if(checkEmail(email)) {
-                    res.push(email);
+                    $.merge(res, new Array(email));
+                    //res.push(email);
                 }
             }
         }
