@@ -156,10 +156,10 @@ function record() {
         function() {
             alert("recordAudio():Audio Success");
         },
-
         // error callback
         function(err) {
-            alert("recordAudio():Audio Error: "+ err.code);
+            if(err.message  != undefined) { alert("playAudio():Audio Error: "+err.message); }
+            if(err.code  != undefined) { alert("playAudio():Audio Error: "+err.code); }
         }
     );
 
@@ -182,6 +182,7 @@ $(document).on('pageinit', function() {
         async    : true
     });
 });
+
 $( "#sendButton" ).click(function(event) {
     //event.preventDefault();
     getUploadUrl("");
