@@ -55,6 +55,12 @@ function onDeviceReady() {
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
+/*
 $( document ).ready(function() {
+    jQueryDeferred.resolve();
+});
+*/
+
+$(document).on('pageinit', function() {
     jQueryDeferred.resolve();
 });

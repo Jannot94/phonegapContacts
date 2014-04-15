@@ -4,17 +4,25 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-        <link rel="stylesheet" type="text/css" href="external/bootstrap/css/bootstrap.min.css" />
+        <!--link rel="stylesheet" type="text/css" href="external/bootstrap/css/bootstrap.min.css" /-->
+        <link rel="stylesheet" href="external/jquerymobile/jquerymobile.min.css" />
         <title>Hello World</title>
     </head>
     <body>
-    <!--div class="navbar navbar-default navbar-fixed-top" role="navigation"-->
-    </div>
-        <h1>ContactList</h1>
-        <ul class="list-group" id="contactList"></ul>
+        <div data-role="page" id="contacts-page" data-theme="a">
+            <div data-role="header">
+                <a href="#" data-icon="refresh" data-iconpos="notext"></a>
+                <h1>Contacts</h1>
+                <a href="#record-page" data-icon="check" data-iconpos="notext"></a>
+            </div>
+            <div role="main" class="ui-content">
+                <ul data-role="listview"  data-filter="true" data-filter-placeholder="Rechercher ..." id="contactList"></ul>
+            </div>
+        </div>
         
         <script type="text/javascript" src="external/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="external/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="external/jquerymobile/jquerymobile.min.js"></script>
+        <!--script type="text/javascript" src="external/bootstrap/js/bootstrap.min.js"></script-->
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
