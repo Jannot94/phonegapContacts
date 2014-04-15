@@ -151,7 +151,7 @@ var mediaRec = null;
 
 function record() {
 
-    mediaRec = new Media("myrecording.wav",
+    mediaRec = new Media("myrecording.mp3",
         // success callback
         function() {
             alert("recordAudio():Audio Success");
@@ -182,16 +182,19 @@ $(document).on('pageinit', function() {
         async    : true
     });
 
-    $( "#sendButton" ).click(function() {
-      getUploadUrl("");
+    $( "#sendButton" ).click(function(event) {
+        event.preventDefault();
+        getUploadUrl("");
     });
 
-    $( "#stopButton" ).click(function() {
-      stop();
+    $( "#stopButton" ).click(function(event) {
+        event.preventDefault();
+        stop();
     });
 
-    $( "#recButton" ).click(function() {
-      record("");
+    $( "#recButton" ).click(function(event) {
+        event.preventDefault();
+        record("");
     });
 
     
