@@ -87,7 +87,7 @@ function getUploadUrl(fileToUpload) {
     })
     .done(function( data ) {
         alert("url to uplad : " + data.Result.url);
-        uploadFile(fileToUpload, data.Result.url);
+        uploadFile( data.Result.url);
     })
     .fail( function() {
         alert("ajax failed");
@@ -117,8 +117,8 @@ function sendRecording(urlToUpload) {
 
 function uploadFile(mediaFile, url) {
     var ft = new FileTransfer(),
-        path = mediaFile.fullPath,
-        name = mediaFile.name;
+        path = mediaPlayer.src.fullPath,
+        name = mediaPlayer.src.name;
 
     ft.upload(path,url,
         function(result) {
@@ -173,9 +173,7 @@ $(document).on('pageinit', function() {
 });
 
 $( "#recButton" ).click(function(event) {
-    //if (mediaRec == null) {
-        mediaRec = new Media("myrecording.wav", recorder_onSuccess, recorder_onError);
-    //}
+    mediaRec = new Media("myrecording.wav", recorder_onSuccess, recorder_onError);
     mediaRec.startRecord();
 });
 
@@ -186,9 +184,7 @@ $( "#stopButton" ).click(function(event) {
 });
 
 $( "#playButton" ).click(function(event) {
-    //if (mediaPlayer == null) {
-        mediaPlayer = new Media("myrecording.wav", player_onSuccess, player_onError);
-    //}
+    mediaPlayer = new Media("myrecording.wav", player_onSuccess, player_onError);
     mediaPlayer.play();
 });
 
