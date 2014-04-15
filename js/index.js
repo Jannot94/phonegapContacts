@@ -130,21 +130,28 @@ function uploadFile(mediaFile, url) {
         },
         { fileName: name });
 }
-var mediaRec = null;
+
+var mediaRecorder = null;
+var mediaPlayer   = null;
+
 function start() {
     getContacts();
+}
 
-    mediaRec = new Media("myrecording.wav",
-        // success callback
-        function() {
-            alert("recordAudio():Audio Success");
-        },
-        // error callback
-        function(err) {
-            if(err.message  != undefined) { alert("playAudio():Audio Error: "+err.message); }
-            if(err.code  != undefined) { alert("playAudio():Audio Error: "+err.code); }
-        }
-    );
+function player_onSuccess() {
+    //console.log("playAudio():Audio Success");
+}
+
+function player_onError(error) {
+    alert('code: ' + error.code  + '\n' +  'message: ' + error.message + '\n');
+}
+
+function recorder_onSuccess() {
+    //console.log("playAudio():Audio Success");
+}
+
+function recorder_onError(error) {
+    alert('code: ' + error.code  + '\n' +  'message: ' + error.message + '\n');
 }
 
 function onDeviceReady() {
@@ -152,13 +159,6 @@ function onDeviceReady() {
 }
 
 document.addEventListener('deviceready', onDeviceReady, false);
-
-/*
-$( document ).ready(function() {
-    jQueryDeferred.resolve();
-});
-*/
-
 
 
 $(document).on('pageinit', function() {
@@ -173,6 +173,9 @@ $(document).on('pageinit', function() {
 });
 
 $( "#recButton" ).click(function(event) {
+    if (mediaRec == null) {
+        mediaRec = new Media("myrecording.wav", recorder_onSuccess, recorder_onError);
+    }
     mediaRec.startRecord();
 });
 
@@ -181,7 +184,10 @@ $( "#stopButton" ).click(function(event) {
 });
 
 $( "#playButton" ).click(function(event) {
-    mediaRec.play();
+    if (mediaPlayer == null) {
+        mediaPlayer = new Media("myrecording.wav", player_onSuccess, player_onError);
+    }
+    mediaPlayer.play();
 });
 
 $( "#sendButton" ).click(function(event) {
