@@ -115,7 +115,7 @@ function sendRecording(urlToUpload) {
     });
 }
 
-function uploadFile(mediaFile, url) {
+function uploadFile(url) {
     var ft = new FileTransfer(),
         path = mediaPlayer.src.fullPath,
         name = mediaPlayer.src.name;
