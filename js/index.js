@@ -130,11 +130,11 @@ function uploadFile(mediaFile, url) {
         },
         { fileName: name });
 }
-
+var mediaRec = null;
 function start() {
     getContacts();
 
-    var mediaRec = new Media("myrecording.wav",
+    mediaRec = new Media("myrecording.wav",
         // success callback
         function() {
             alert("recordAudio():Audio Success");
