@@ -168,8 +168,10 @@ function record() {
 }
 
 function stop() {
-    alert("stopRecord()");
     mediaRec.stopRecord();
+}
+function play() {
+    mediaRec.play();
 }
 
 $(document).on('pageinit', function() {
@@ -183,17 +185,18 @@ $(document).on('pageinit', function() {
     });
 });
 
-$( "#sendButton" ).click(function(event) {
-    //event.preventDefault();
-    getUploadUrl("");
+$( "#recButton" ).click(function(event) {
+    record("");
 });
 
 $( "#stopButton" ).click(function(event) {
-    //event.preventDefault();
     stop();
 });
 
-$( "#recButton" ).click(function(event) {
-    //event.preventDefault();
-    record("");
+$( "#playButton" ).click(function(event) {
+    play();
+});
+
+$( "#sendButton" ).click(function(event) {
+    getUploadUrl("");
 });
