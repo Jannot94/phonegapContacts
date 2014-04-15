@@ -139,7 +139,7 @@ function start() {
 }
 
 function player_onSuccess() {
-    //console.log("playAudio():Audio Success");
+    alert("playAudio():player_onSuccess Success");
 }
 
 function player_onError(error) {
@@ -147,7 +147,7 @@ function player_onError(error) {
 }
 
 function recorder_onSuccess() {
-    //console.log("playAudio():Audio Success");
+    alert("playAudio():recorder_onSuccess Success");
 }
 
 function recorder_onError(error) {
@@ -173,20 +173,22 @@ $(document).on('pageinit', function() {
 });
 
 $( "#recButton" ).click(function(event) {
-    if (mediaRec == null) {
+    //if (mediaRec == null) {
         mediaRec = new Media("myrecording.wav", recorder_onSuccess, recorder_onError);
-    }
+    //}
     mediaRec.startRecord();
 });
 
 $( "#stopButton" ).click(function(event) {
-    mediaRec.stopRecord();
+    if (mediaRec != null) {
+        mediaRec.stopRecord();
+    }
 });
 
 $( "#playButton" ).click(function(event) {
-    if (mediaPlayer == null) {
+    //if (mediaPlayer == null) {
         mediaPlayer = new Media("myrecording.wav", player_onSuccess, player_onError);
-    }
+    //}
     mediaPlayer.play();
 });
 
