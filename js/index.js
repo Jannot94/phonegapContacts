@@ -151,10 +151,10 @@ var mediaRec = null;
 
 function record() {
 
-    mediaRec = new Media("myrecording.mp3",
+    mediaRec = new Media("myrecording.wav",
         // success callback
         function() {
-            alert("recordAudio():Audio Success");
+            //alert("recordAudio():Audio Success");
         },
         // error callback
         function(err) {
