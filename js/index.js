@@ -6,14 +6,23 @@ function contactsFind_onSuccess(contacts) {
             for( var j = 0; j < contact.emails.length; j++) {
                 var email = contact.emails[j].value;
                 if(checkEmail(email)) {
-                    $.merge(res, new Array(email));
-                    //res.push(email);
+                    //$.merge(res, new Array(email));
+                    res.push(email);
                 }
             }
         }
     }
+    res = unique(res);
     res.sort(SortByEmail);
     refreshContactView(res);
+}
+
+function unique(list) {
+  var result = [];
+  $.each(list, function(i, e) {
+    if ($.inArray(e, result) == -1) result.push(e);
+  });
+  return result;
 }
 
 function checkEmail(email) {
