@@ -9,14 +9,41 @@
         <title>Hello World</title>
     </head>
     <body>
-        <div data-role="page" id="contacts-page" data-theme="a">
-            <div data-role="header">
-                <a href="#" data-icon="refresh" data-iconpos="notext"></a>
-                <h1>Contacts</h1>
-                <a href="#record-page" data-icon="check" data-iconpos="notext"></a>
+        <!-- Discussions -->
+        <div data-role="page" id="discussions-page" data-theme="a" data-add-back-btn="true">
+            <div data-role="header" >
+                <h1>Discussions</h1>
+                <a href="#contacts-page" class="ui-btn-right" data-icon="plus" data-iconpos="notext"></a>
             </div>
             <div role="main" class="ui-content">
-                <ul data-role="listview"  data-filter="true" data-filter-placeholder="Rechercher ..." id="contactList"></ul>
+                <ul data-role="listview"  data-filter="true" data-filter-placeholder="Rechercher ..." id="discussionsList">
+                    <li>Discussion 1</li>
+                    <li>Discussion 2</li>
+                    <li>Discussion 3</li>
+                    <li>Discussion 4</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Contacts -->
+        <div data-role="page" id="contacts-page" data-theme="a" data-add-back-btn="true">
+            <div data-role="header" >
+                <a href="#" class="ui-btn-left" data-rel="back" data-icon="carat-l" data-iconpos="notext"></a>
+                <h1>Contacts</h1>
+                <a href="#record-page" class="ui-btn-right" data-icon="check" data-iconpos="notext"></a>
+            </div>
+            <div role="main" class="ui-content">
+                <ul data-role="listview"  data-filter="true" data-filter-placeholder="Rechercher ..." id="contactsList"></ul>
+            </div>
+        </div>
+
+        <!-- Record -->
+        <div data-role="page" id="record-page" data-theme="a" data-add-back-btn="true">
+            <div data-role="header">
+                <a href="#" class="ui-btn-left" data-rel="back" data-icon="carat-l" data-iconpos="notext"></a>
+                <h1>Record</h1>
+            </div>
+            <div role="main" class="ui-content">
             </div>
         </div>
         
