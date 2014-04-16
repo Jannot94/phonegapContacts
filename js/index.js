@@ -13,7 +13,7 @@ function contactsFind_onSuccess(contacts) {
                     for (var k = 0; k < res.length; k++) {
                         if (res[k].email == email) {
                             alreadyIn = true;
-                            break;
+                            //break;
                         }
                     }
                     if (alreadyIn == false) {
