@@ -4,12 +4,12 @@ function contactsFind_onSuccess(contacts) {
 
     for( var i = 0; i < contacts.length; i++) {
         var contact = contacts[i];
-        var img     = contact.photos != null ? contact.photos[0].value : defaultImagePath
         if( contact.emails != null ) {
-            for( var j = 0; j < contact.emails.length; j++) {
+            var img     = (contact.photos != null) ? contact.photos[0].value : defaultImagePath
+            for (var j = 0; j < contact.emails.length; j++) {
                 var email = contact.emails[j].value;
                 if(checkEmail(email)) {
-                    res.push({"email":email, "img":img});
+                    res.push( { "email" : email, "img" : img } );
                 }
             }
         }
@@ -21,7 +21,7 @@ function contactsFind_onSuccess(contacts) {
     // refresh the view
     refreshContactView(res);
 }
-
+/*
 function returnValidPhoto(url, callback){
     var img = new Image();
     img.onload = function() {
@@ -33,8 +33,8 @@ function returnValidPhoto(url, callback){
         callback("img/defaultUser.png");
     }
     img.src = url;
-}
-
+}*/
+/*
 function unique(list) {
     var result = new Array();
     $.each(list, function(i, e) {
@@ -51,7 +51,7 @@ function unique(list) {
     });
     return result;
 }
-
+*/
 function checkEmail(email) {
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return filter.test(email);
