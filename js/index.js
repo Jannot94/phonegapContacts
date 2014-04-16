@@ -43,7 +43,7 @@ function SortByEmail(a, b){
 
 function refreshContactView(contacts) {
     for( var i = 0; i < contacts.length; i++) {
-        $("#contactsList").append('<li class="list-group-item"><img src="'+ contacts[i].img +'"/>' + contacts[i].email + " : " + contacts[i].img + '</li>');
+        $("#contactsList").append('<li class="list-group-item"><img src="'+ contacts[i].img +'"/>' +  contacts[i].img + '</li>');
     }
 }
 
