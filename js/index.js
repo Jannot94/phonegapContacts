@@ -1,6 +1,7 @@
 function contactsFind_onSuccess(contacts) {
     var res = new Array();
     var defaultImagePath = "img/defaultUser.png";
+    
     for( var i = 0; i < contacts.length; i++) {
         var contact = contacts[i];
         var img     = contact.photos != null ? contact.photos[0].value : defaultImagePath
@@ -54,7 +55,7 @@ function getContacts() {
     var options      = new ContactFindOptions();
     options.filter   = "";
     options.multiple = true;
-    var fields       = ["emails"];
+    var fields       = ["emails", "photos"];
     navigator.contacts.find(fields, contactsFind_onSuccess, contactsFind_onError, options);
 }
 
