@@ -1,19 +1,20 @@
 function contactsFind_onSuccess(contacts) {
     var res = new Array();
+    var defaultImagePath = "img/defaultUser.png";
     for( var i = 0; i < contacts.length; i++) {
         var contact = contacts[i];
+        var img     = contact.photos != null ? contact.photos[0].value : defaultImagePath
         if( contact.emails != null ) {
             for( var j = 0; j < contact.emails.length; j++) {
                 var email = contact.emails[j].value;
                 if(checkEmail(email)) {
-                    //$.merge(res, new Array(email));
-                    res.push(email);
+                    res.push({"email":email, "img":img);
                 }
             }
         }
     }
     // Remove duplicates in the array
-    res = unique(res);
+    //res = unique(res);
     // Sort the array in alphabetical order
     res.sort(SortByEmail);
     // refresh the view
@@ -34,14 +35,14 @@ function checkEmail(email) {
 }
 
 function SortByEmail(a, b){
-  var aEmail = a.toLowerCase();
-  var bEmail = b.toLowerCase(); 
+  var aEmail = a.email.toLowerCase();
+  var bEmail = b.email.toLowerCase(); 
   return ((aEmail < bEmail) ? -1 : ((aEmail > bEmail) ? 1 : 0));
 }
 
 function refreshContactView(contacts) {
     for( var i = 0; i < contacts.length; i++) {
-        $("#contactsList").append('<li class="list-group-item">' + contacts[i] + '</li>');
+        $("#contactsList").append('<li class="list-group-item"><img src="'+ contacts[i].img+'"/>' + contacts[i].email + '</li>');
     }
 }
 
