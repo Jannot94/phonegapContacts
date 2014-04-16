@@ -15,7 +15,7 @@ function contactsFind_onSuccess(contacts) {
         }
     }
     // Remove duplicates in the array
-    res = unique(res);
+    //res = unique(res);
     // Sort the array in alphabetical order
     res.sort(SortByEmail);
     // refresh the view
