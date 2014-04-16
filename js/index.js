@@ -9,7 +9,16 @@ function contactsFind_onSuccess(contacts) {
             for (var j = 0; j < contact.emails.length; j++) {
                 var email = contact.emails[j].value;
                 if(checkEmail(email)) {
-                    res.push( { "email" : email, "img" : img } );
+                    var alreadyIn = false;
+                    for (var k = 0; k < res.length; k++) {
+                        if (res[k].email == email) {
+                            alreadyIn = true;
+                            break;
+                        }
+                    }
+                    if (alreadyIn == false) {
+                        res.push( { "email" : email, "img" : img } );
+                    }
                 }
             }
         }
@@ -34,7 +43,7 @@ function returnValidPhoto(url, callback){
     }
     img.src = url;
 }*/
-/*
+
 function unique(list) {
     var result = new Array();
     $.each(list, function(i, e) {
@@ -51,7 +60,7 @@ function unique(list) {
     });
     return result;
 }
-*/
+
 function checkEmail(email) {
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return filter.test(email);
