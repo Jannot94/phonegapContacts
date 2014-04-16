@@ -4,26 +4,15 @@ function contactsFind_onSuccess(contacts) {
 
     for( var i = 0; i < contacts.length; i++) {
         var contact = contacts[i];
-        //var img;//     = contact.photos != null ? contact.photos[0].value : defaultImagePath
-        returnValidphoto(contact.photos[0].value, function(imgUrl) {
-            if( contact.emails != null ) {
-                for( var j = 0; j < contact.emails.length; j++) {
-                    var email = contact.emails[j].value;
-                    if(checkEmail(email)) {
-                        res.push({"email":email, "img":imgUrl});
-                    }
-                }
-            }
-        });
-
-        /*if( contact.emails != null ) {
+        var img     = contact.photos != null ? contact.photos[0].value : defaultImagePath
+        if( contact.emails != null ) {
             for( var j = 0; j < contact.emails.length; j++) {
                 var email = contact.emails[j].value;
                 if(checkEmail(email)) {
                     res.push({"email":email, "img":img});
                 }
             }
-        }*/
+        }
     }
     // Remove duplicates in the array
     res = unique(res);
@@ -33,7 +22,7 @@ function contactsFind_onSuccess(contacts) {
     refreshContactView(res);
 }
 
-var returnValidPhoto=function(url,callback){
+function returnValidPhoto(url, callback){
     var img = new Image();
     img.onload = function() {
     //Image is ok
@@ -41,10 +30,10 @@ var returnValidPhoto=function(url,callback){
     };
     img.onerror = function(err) {
         //Returning a default image for users without photo 
-        callback("image_for_no_avatar.png");
+        callback("img/defaultUser.png");
     }
     img.src = url;
-};
+}
 
 function unique(list) {
   var result = [];
