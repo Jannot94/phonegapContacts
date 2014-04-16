@@ -36,11 +36,20 @@ function returnValidPhoto(url, callback){
 }
 
 function unique(list) {
-  var result = [];
-  $.each(list, function(i, e) {
-    if ($.inArray(e, result) == -1) result.push(e);
-  });
-  return result;
+    var result = [];
+    $.each(list, function(i, e) {
+        var alreadyIn = false;
+        $.each(result, function(j, f) {
+            if (f.email == e.email) {
+                alreadyIn = true;
+                break;
+            }
+        }
+        if (alreadyIn = false) {
+            result.push(e);
+        }
+    });
+    return result;
 }
 
 function checkEmail(email) {
@@ -56,7 +65,7 @@ function SortByEmail(a, b){
 
 function refreshContactView(contacts) {
     for( var i = 0; i < contacts.length; i++) {
-        $("#contactsList").append('<li class="list-group-item"><img src="'+ contacts[i].img +'"/>' +  contacts[i].img + '</li>');
+        $("#contactsList").append('<li class="list-group-item"><img src="'+ contacts[i].img +'"/>' +  contacts[i].email + '</li>');
     }
 }
 
