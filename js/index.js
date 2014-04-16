@@ -44,7 +44,7 @@ function returnValidPhoto(url, callback){
     img.src = url;
 }*/
 
-function unique(list) {
+/*function unique(list) {
     var result = new Array();
     $.each(list, function(i, e) {
         var alreadyIn = false;
@@ -59,7 +59,7 @@ function unique(list) {
         }
     });
     return result;
-}
+}*/
 
 function checkEmail(email) {
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
