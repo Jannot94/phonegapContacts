@@ -8,7 +8,7 @@ function contactsFind_onSuccess(contacts) {
             for( var j = 0; j < contact.emails.length; j++) {
                 var email = contact.emails[j].value;
                 if(checkEmail(email)) {
-                    res.push({"email":email, "img":img);
+                    res.push({"email":email, "img":img});
                 }
             }
         }
@@ -42,7 +42,7 @@ function SortByEmail(a, b){
 
 function refreshContactView(contacts) {
     for( var i = 0; i < contacts.length; i++) {
-        $("#contactsList").append('<li class="list-group-item"><img src="'+ contacts[i].img+'"/>' + contacts[i].email + '</li>');
+        $("#contactsList").append('<li class="list-group-item"><img src="'+ contacts[i].img +'"/>' + contacts[i].email + '</li>');
     }
 }
 
