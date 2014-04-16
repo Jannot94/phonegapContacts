@@ -215,3 +215,8 @@ $( "#playButton" ).click(function(event) {
 $( "#sendButton" ).click(function(event) {
     getUploadUrl("");
 });
+
+$('#discussionsList').on('click', 'li', function() {
+    //alert($(this).attr('id'));
+    $.mobile.changePage("#record-page");
+});
