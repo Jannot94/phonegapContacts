@@ -1,7 +1,7 @@
 function contactsFind_onSuccess(contacts) {
     var res = new Array();
     var defaultImagePath = "img/defaultUser.png";
-    
+
     for( var i = 0; i < contacts.length; i++) {
         var contact = contacts[i];
         var img     = contact.photos != null ? contact.photos[0].value : defaultImagePath
@@ -15,7 +15,7 @@ function contactsFind_onSuccess(contacts) {
         }
     }
     // Remove duplicates in the array
-    //res = unique(res);
+    res = unique(res);
     // Sort the array in alphabetical order
     res.sort(SortByEmail);
     // refresh the view
