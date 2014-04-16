@@ -5,43 +5,23 @@ function contactsFind_onSuccess(contacts) {
     for( var i = 0; i < contacts.length; i++) {
         var contact = contacts[i];
         if( contact.emails != null ) {
-            //var img     = (contact.photos != null) ? contact.photos[0].value : defaultImagePath
-            var img = new Image();
-            img.onload = function() {
-                for (var j = 0; j < contact.emails.length; j++) {
-                    var email = contact.emails[j].value;
-                    if(checkEmail(email)) {
-                        var alreadyIn = false;
-                        for (var k = 0; k < res.length; k++) {
-                            if (res[k].email == email) {
-                                alreadyIn = true;
-                                break;
-                            }
-                        }
-                        if (alreadyIn == false) {
-                            res.push( { "email" : email, "img" : img } );
+            var img     = (contact.photos != null) ? contact.photos[0].value : defaultImagePath
+            for (var j = 0; j < contact.emails.length; j++) {
+                var emailType = contact.emails[j].type;
+                var email = contact.emails[j].value;
+                if(checkEmail(email)) {
+                    var alreadyIn = false;
+                    for (var k = 0; k < res.length; k++) {
+                        if (res[k].email == email) {
+                            alreadyIn = true;
+                            break;
                         }
                     }
-                }
-            };
-            img.onerror = function(err) {
-                for (var j = 0; j < contact.emails.length; j++) {
-                    var email = contact.emails[j].value;
-                    if(checkEmail(email)) {
-                        var alreadyIn = false;
-                        for (var k = 0; k < res.length; k++) {
-                            if (res[k].email == email) {
-                                alreadyIn = true;
-                                break;
-                            }
-                        }
-                        if (alreadyIn == false) {
-                            res.push( { "email" : email, "img" : "img/defaultUser.png" } );
-                        }
+                    if (alreadyIn == false) {
+                        res.push( { "emailType": emailType, "email" : email, "img" : img } );
                     }
                 }
             }
-            img.src = contact.photos[0].value;
         }
     }
     res.sort(SortByEmail);
@@ -76,7 +56,7 @@ function SortByEmail(a, b){
 
 function refreshContactView(contacts) {
     for( var i = 0; i < contacts.length; i++) {
-        $("#contactsList").append('<li class="list-group-item"><img src="'+ contacts[i].img +'"/>' +  contacts[i].email + '</li>');
+        $("#contactsList").append('<li class="list-group-item"><img src="'+ contacts[i].img +'"/>' +  contacts[i].emailType + " : " + contacts[i].email + '</li>');
     }
 }
 
