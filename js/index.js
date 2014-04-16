@@ -9,16 +9,16 @@ function contactsFind_onSuccess(contacts) {
             for (var j = 0; j < contact.emails.length; j++) {
                 var email = contact.emails[j].value;
                 if(checkEmail(email)) {
-                    var alreadyIn = false;
-                    for (var k = 0; k < res.length; k++) {
-                        if (res[k].email == email) {
+                    //var alreadyIn = false;
+                    //for (var k = 0; k < res.length; k++) {
+                    //    if (res[k].email == email) {
                             //alreadyIn = true;
                             //break;
-                        }
-                    }
-                    if (alreadyIn == false) {
+                    //    }
+                    //}
+                    //if (alreadyIn == false) {
                         res.push( { "email" : email, "img" : img } );
-                    }
+                    //}
                 }
             }
         }
