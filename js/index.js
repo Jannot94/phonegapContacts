@@ -36,7 +36,7 @@ function returnValidPhoto(url, callback){
 }
 
 function unique(list) {
-    var result = [];
+    var result = new Array();
     $.each(list, function(i, e) {
         var alreadyIn = false;
         $.each(result, function(j, f) {
@@ -45,7 +45,7 @@ function unique(list) {
                 break;
             }
         }
-        if (alreadyIn = false) {
+        if (alreadyIn == false) {
             result.push(e);
         }
     });
