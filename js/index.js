@@ -28,6 +28,7 @@ function contactsFind_onSuccess(contacts) {
     // refresh the view
     refreshContactView(res);
 }
+
 /*
 function returnValidPhoto(url, callback){
     var img = new Image();
@@ -40,8 +41,8 @@ function returnValidPhoto(url, callback){
         callback("img/defaultUser.png");
     }
     img.src = url;
-}*/
-
+}
+*/
 
 function checkEmail(email) {
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -52,6 +53,16 @@ function SortByEmail(a, b){
   var aEmail = a.email.toLowerCase();
   var bEmail = b.email.toLowerCase(); 
   return ((aEmail < bEmail) ? -1 : ((aEmail > bEmail) ? 1 : 0));
+}
+
+function refreshDiscussionsView() {
+    var discussions = new Discussions();
+    discussions.get();
+    $("#discussionsList").empty();
+    for( var i = 0; i < discussions.list.length; i++) {
+        $("#discussionsList").append('<li id="discussions' + i + '"><img src="img/defaultChat.png"/>' +  discussions.list[i].recipients.join(", ") + '</li>');
+    }
+    $( "#discussionsList" ).listview( "refresh" );
 }
 
 function refreshContactView(contacts) {
@@ -150,11 +161,11 @@ var mediaRecorder = null;
 var mediaPlayer   = null;
 
 function start() {
-    getContacts();
+    //getContacts();
 }
 
 function player_onSuccess() {
-    alert("playAudio():player_onSuccess Success");
+    //alert("playAudio():player_onSuccess Success");
 }
 
 function player_onError(error) {
@@ -162,7 +173,7 @@ function player_onError(error) {
 }
 
 function recorder_onSuccess() {
-    alert("playAudio():recorder_onSuccess Success");
+    //alert("playAudio():recorder_onSuccess Success");
 }
 
 function recorder_onError(error) {
@@ -209,10 +220,37 @@ $( "#sendButton" ).click(function(event) {
 
 $('#discussionsList').on('click', 'li', function() {
     //alert($(this).attr('id'));
-    $.mobile.changePage("#record-page");
+   // $.mobile.changePage("#record-page", { data: {param1:"value1"}});
+    $.mobile.pageContainer.pagecontainer( "change", "#record-page", { discussionsId: $(this).attr('id') } );
 });
 
 $('#contactsList').on('click', 'li', function() {
     //alert($(this).attr('id'));
     $.mobile.changePage("#record-page");
+});
+
+$('#contacts-page' ).on( "pagebeforeshow", function( event, data ){
+    getContacts();
+});
+$('#discussions-page' ).on( "pagebeforeshow", function( event, data ){
+     refreshDiscussionsView();
+});
+$('#discussion-page' ).on( "pagebeforeshow", function( event, data ){
+     //console.log("data");
+});
+$('#record-page' ).on( "pagebeforeshow", function( event, data ){
+     //console.log(event);
+     //console.log(data);
+     //if ( data.toPage[0].id == "pageX" ) {
+       //var stuff = data.options.foo;
+       //console.log(event);
+        //console.log( data);
+   // }
+});
+
+$( document ).on( "pagebeforechange" , function ( event, data ) {
+    if ( data.toPage[0].id == "record-page" ) {
+        var discussionsId = data.options.discussionsId;
+        console.log("discussionsId = " + discussionsId);
+    }
 });

@@ -4,7 +4,6 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-        <!--link rel="stylesheet" type="text/css" href="external/bootstrap/css/bootstrap.min.css" /-->
         <link rel="stylesheet" href="external/jquerymobile/jquerymobile.min.css" />
         <title>Hello World</title>
     </head>
@@ -17,6 +16,18 @@
             </div>
             <div role="main" class="ui-content">
                 <ul data-role="listview"  data-filter="true" data-filter-placeholder="Rechercher ..." id="discussionsList">
+                </ul>
+            </div>
+        </div>
+
+        <!-- Discussion -->
+        <div data-role="page" id="discussion-page" data-theme="a" data-add-back-btn="true">
+            <div data-role="header" >
+                <a href="#" class="ui-btn-left" data-rel="back" data-icon="carat-l" data-iconpos="notext"></a>
+                <h1>Discussion</h1>
+            </div>
+            <div role="main" class="ui-content">
+                <ul data-role="listview"  data-filter="true" data-filter-placeholder="Rechercher ..." id="discussionList">
                     <li id="d1"><img src="img/defaultChat.png"/>Discussion 1</li>
                     <li id="d2"><img src="img/defaultChat.png"/>Discussion 2</li>
                     <li id="d3"><img src="img/defaultChat.png"/>Discussion 3</li>
@@ -52,8 +63,8 @@
         
         <script type="text/javascript" src="external/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="external/jquerymobile/jquerymobile.min.js"></script>
-        <!--script type="text/javascript" src="external/bootstrap/js/bootstrap.min.js"></script-->
         <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/class.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             var phonegapDeferred = $.Deferred();
