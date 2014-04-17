@@ -59,8 +59,8 @@ function refreshDiscussionsView() {
     var discussions = new Discussions();
     discussions.get();
     $("#discussionsList").empty();
-    for( var i = 0; i < discussions.list.length; i++) {
-        $("#discussionsList").append('<li id="discussions' + i + '"><img src="img/defaultChat.png"/>' +  discussions.list[i].recipients.join(", ") + '</li>');
+    for( var i = 0; i < chats.length; i++) {
+        $("#discussionsList").append('<li id="chatId' + i + '"><img src="img/defaultChat.png"/>' +  chats.getRecipients(i).join(", ") + '</li>');
     }
     $( "#discussionsList" ).listview( "refresh" );
 }
@@ -248,9 +248,25 @@ $('#record-page' ).on( "pagebeforeshow", function( event, data ){
    // }
 });
 
+function refreshRecordView(recipients) {
+    $('#recipients').empty();
+    for( var i = 0; i < recipients.length; i++) {
+        $("#recipients").append('<input type="button" id="recipientId'+ i + '" data-icon="delete" data-mini="true" data-iconpos="right" data-inline="true" value="' + recipients[i] + '">');
+    }
+    $('#record-page').trigger('create');
+
+
+}
+
 $( document ).on( "pagebeforechange" , function ( event, data ) {
     if ( data.toPage[0].id == "record-page" ) {
-        var discussionsId = data.options.discussionsId;
-        console.log("discussionsId = " + discussionsId);
+        var chatIdString = data.options.discussionsId;
+        var chatId = parseInt(chatIdString.replace("chatId",""));
+        var recipients = chats.getRecipients(chatId);
+        refreshRecordView(recipients);
     }
+    if ( data.options.fromPage) {
+        console.log(data.options.fromPage[0].id);
+    }
+    
 });
